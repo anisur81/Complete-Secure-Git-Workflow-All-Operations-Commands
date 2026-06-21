@@ -51,3 +51,184 @@ git tag -v <tagname>
 # Verify checksum of cloned repo
 git fsck --full
 ```
+ 
+
+# 🔐 Git + GPG Secure Workflow (Codespaces Full Setup)
+
+This document contains all steps used to configure Git identity, GPG signing, and signed tags in GitHub Codespaces.
+
+---
+
+# ⚙️ 1. Configure Git User Identity
+
+```bash
+git config --global user.name "anisur81"
+git config --global user.email "anisur81@gmail.com"
+```
+
+---
+
+# 🔍 2. Check Git Identity
+
+```bash
+git config --get user.name
+git config --get user.email
+```
+
+---
+
+# 🔎 3. Check GPG Format (Codespaces Debug)
+
+```bash
+git config --show-origin --get gpg.format
+```
+
+---
+
+# 🔑 4. List Existing GPG Keys
+
+```bash
+gpg --list-secret-keys --keyid-format LONG
+```
+
+---
+
+# 🆕 5. Generate New GPG Key
+
+```bash
+gpg --full-generate-key
+```
+
+---
+
+# 🔐 6. Configure GPG Signing in Git
+
+⚠️ Note: correct key config is `user.signingkey`
+
+```bash
+git config --global user.signkey 9952F54B2F33FCC604026598C40295A9812D998D
+git config --global user.signingkey C40295A9812D998D
+```
+
+---
+
+# ✍️ 7. Enable Commit & Tag Signing
+
+```bash
+git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+```
+
+---
+
+# 📤 8. Export GPG Public Key
+
+```bash
+gpg --armor --export 9952F54B2F33FCC604026598C40295A9812D998D
+```
+
+---
+
+# 🔧 9. Check Full Git Config (GPG Related)
+
+```bash
+git config --list --show-origin | grep -E "gpg|sign|signing|format"
+```
+
+---
+
+# 🔑 10. Confirm GPG Key Exists
+
+```bash
+gpg --list-secret-keys --keyid-format LONG
+```
+
+---
+
+# ⚙️ 11. Fix GPG Program (Codespaces Issue Fix)
+
+```bash
+git config --global gpg.program gpg
+```
+
+---
+
+# 🔐 12. Configure Final Signing Key
+
+```bash
+git config --global user.signingkey C40295A9812D998D
+git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+```
+
+---
+
+# 🔎 13. Verify Final Config
+
+```bash
+git config --global --list | grep gpg
+```
+
+---
+
+# 🧩 14. Fix Pinentry Issue (Codespaces Terminal Fix)
+
+```bash
+echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+```
+
+Restart GPG agent:
+
+```bash
+gpgconf --kill gpg-agent
+gpgconf --launch gpg-agent
+```
+
+---
+
+# 🏷️ 15. Create Signed Tag
+
+```bash
+git tag -s v1.0 -m "Signed release"
+```
+
+---
+
+# ✔️ 16. Verify Signed Tag
+
+```bash
+git tag -v v1.0
+```
+
+---
+
+# 📌 Summary
+
+This setup ensures:
+
+* ✔ Git identity configured
+* ✔ GPG key created
+* ✔ Git uses correct signing key
+* ✔ Commit + tag signing enabled
+* ✔ Codespaces pinentry issue fixed
+* ✔ Signed Git tags working
+
+---
+
+# 🚀 Result
+
+After this setup:
+
+* Your commits/tags will be **cryptographically signed**
+* GitHub can show **Verified badge**
+* Your workflow is production-grade secure
+
+---
+
+If you want, I can also:
+
+* Turn this into a **GitHub-ready README.md with badges**
+* Add a **diagram of Git + GPG workflow**
+* Or convert it into a **PDF cheat sheet for interviews**
+
