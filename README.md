@@ -147,7 +147,7 @@ pre-commit install
 ./verify-setup.sh
 ```
 
-For detailed prerequisites, see [00-SecureGit Prerequisites Checklist.md]("00-SecureGit Prerequisites Checklist.md")
+For detailed prerequisites, see - [Prerequisites](https://github.com/anisur81/Complete-Secure-Git-Workflow-All-Operations-Commands/blob/main/00-SecureGit%20Prerequisites%20Checklist.md)
 
 ---
 
