@@ -225,10 +225,4 @@ After this setup:
 * Your workflow is production-grade secure
 
 ---
-
-If you want, I can also:
-
-* Turn this into a **GitHub-ready README.md with badges**
-* Add a **diagram of Git + GPG workflow**
-* Or convert it into a **PDF cheat sheet for interviews**
-
+ 
