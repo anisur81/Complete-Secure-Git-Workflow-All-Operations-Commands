@@ -137,20 +137,3 @@ Make it executable:
 chmod +x .git/hooks/pre-commit
 ```
 
----
-
-## 🎯 Key DevSecOps Principles Applied
-
-✔ Prevent secrets before commit (shift-left security)
-✔ Use signed commits (GPG verification)
-✔ Validate remote repository integrity
-✔ Use interactive staging for control
-✔ Automate secret detection
-
- 
-
-If you want, I can also:
-- :contentReference[oaicite:0]{index=0}
-- :contentReference[oaicite:1]{index=1}
-- or :contentReference[oaicite:2]{index=2}
-```
