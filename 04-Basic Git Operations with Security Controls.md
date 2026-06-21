@@ -58,7 +58,15 @@ git diff --staged | grep -E "API_KEY|SECRET|PASSWORD|TOKEN"
 #### 🕵️ Scan repository for secrets (recommended tool)
 
 ```bash
-trufflehog git file://. --since-commit HEAD
+1. Scan entire repository (BEST)
+trufflehog git file://.
+
+2.Scan from first commit
+trufflehog git file://. --since-commit $(git rev-list --max-parents=0 HEAD)
+
+3. Scan recent commits
+trufflehog git file://. --since-commit HEAD~10
+
 ```
 
 #### 📁 Check sensitive/untracked files
