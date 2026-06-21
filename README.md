@@ -40,7 +40,6 @@ This project provides everything you need to establish a secure, efficient, and 
 - ✅ **Enterprise-Ready** - Suitable for teams from startups to large enterprises
 - ✅ **Step-by-Step Documentation** - Clear, actionable guides for every scenario
 - ✅ **Pre-Configured Tools** - git-secrets, detect-secrets, pre-commit hooks, trufflehog
-- ✅ **Incident Response Ready** - Comprehensive security breach procedures
 - ✅ **Audit & Compliance** - Built-in logging and verification mechanisms
 
 ---
@@ -148,86 +147,11 @@ pre-commit install
 ./verify-setup.sh
 ```
 
-For detailed prerequisites, see [PREREQUISITES.md](PREREQUISITES.md)
+For detailed prerequisites, see [PREREQUISITES.md](00-SecureGit Prerequisites Checklist.md)
 
 ---
 
-## 🚀 Quick Start
 
-### 1. One-Minute Security Setup
-
-```bash
-# Configure Git with security settings
-git config --global user.name "Your Name"
-git config --global user.email "your_email@example.com"
-git config --global commit.gpgsign true
-git config --global init.defaultBranch main
-
-# Generate GPG key (if not already done)
-gpg --full-generate-key
-
-# Set signing key
-gpg --list-secret-keys --keyid-format LONG
-git config --global user.signingkey YOUR_KEY_ID
-```
-
-### 2. Initial Repository Security
-
-```bash
-# Initialize repository with security templates
-git init
-cp -r templates/* .
-
-# Install security hooks
-git secrets --install
-pre-commit install
-
-# Create protected branches
-git checkout -b main
-git commit --allow-empty -S -m "Initial commit with security setup"
-
-# Configure branch protection (via platform UI)
-```
-
-### 3. Daily Development Workflow
-
-```bash
-# Start new feature
-git checkout main && git pull
-git checkout -b feature/awesome-feature
-
-# Make changes with security
-vim code.py
-git add -p  # Interactive staging
-git diff --staged  # Verify changes
-
-# Sign and commit
-git commit -S -m "feat: Add awesome feature"
-
-# Push safely
-git push -u origin feature/awesome-feature --force-with-lease
-
-# Open Pull Request with template
-```
-
-### 4. Emergency Hotfix
-
-```bash
-# Quick security patch
-git checkout main
-git checkout -b hotfix/security-patch
-
-# Fix and commit
-vim security.py
-git add security.py
-git commit -S -m "HOTFIX: Critical security vulnerability"
-
-# Push and deploy immediately
-git push -u origin hotfix/security-patch
-git tag -s v1.0.1-hotfix -m "Security hotfix"
-```
-
----
 
 ## 📐 Workflow Structure
 
@@ -297,25 +221,6 @@ main (production)
 | ✅ **Audit Logging** | Track all changes | Git reflog |
 | ✅ **2FA Required** | Protect account access | Platform |
 | ✅ **Access Control** | Role-based permissions | Platform |
-
-### Security Incident Response
-
-```bash
-# 1. Lock repository (platform UI)
-# 2. Identify compromised commits
-git log --since="24 hours ago" --name-status
-
-# 3. Revert bad commits
-git revert <bad-commit-hash> --no-edit
-
-# 4. Force push fix
-git push --force-with-lease origin main
-
-# 5. Rotate credentials
-# Manual process
-
-# 6. Notify team and update security policy
-```
 
 ### Compliance Documentation
 
