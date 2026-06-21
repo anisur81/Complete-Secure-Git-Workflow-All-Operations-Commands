@@ -42,9 +42,6 @@ git merge-base main feature/feature-a
 git add resolved-file.txt
 git commit -m "Resolve merge conflicts"
 
-# Use external merge tool
-git mergetool
-
 # Continue merge after resolution
 git merge --continue
 
